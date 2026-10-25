@@ -67,3 +67,34 @@
   .statistik__item:nth-child(3) { border-left: 0; }
   .statistik__item:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
+
+/* ===== Layout dua kolom ===== */
+.layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 40px; align-items: start; }
+.layout__samping { position: sticky; top: 24px; }
+@media (max-width: 960px) {
+  .layout { grid-template-columns: 1fr; }
+  .layout__samping { position: static; }
+}
+.layout .daftar__grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+/* ===== Form tambah buku ===== */
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
+.form__judul { font-size: 26px; }
+.form__lead { color: var(--muted); font-size: 14px; margin-top: -8px; margin-bottom: 4px; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field > span { font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+.field input, .field select { width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 10px;
+  background: var(--bg); transition: border-color .15s ease, background .15s ease, box-shadow .15s ease; }
+.field input::placeholder { color: #b0a796; }
+.field input:hover, .field select:hover { border-color: #bfb5a2; }
+.field input:focus, .field select:focus { outline: none; background: #fff; border-color: var(--ink);
+  box-shadow: 0 0 0 3px rgba(28, 26, 23, .08); }
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23857d71' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form__galat { font-size: 13px; color: var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 8px; }
+.tombol { height: 46px; margin-top: 6px; border: 0; border-radius: 10px; background: var(--ink); color: var(--bg);
+  font-weight: 600; letter-spacing: .01em; transition: background .15s ease, transform .1s ease; }
+.tombol:hover { background: #33302b; }
+.tombol:active { transform: scale(.985); }
