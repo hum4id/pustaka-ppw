@@ -1,4 +1,4 @@
-function KartuBuku({ judul, penulis, penerbit, tahun, kategori, stok }) {
+function KartuBuku({ id, judul, penulis, penerbit, tahun, kategori, stok, onHapus }) {
   const tersedia = stok > 0
 
   return (
@@ -23,6 +23,16 @@ function KartuBuku({ judul, penulis, penerbit, tahun, kategori, stok }) {
           <span className="tag">{kategori}</span>
         </div>
       </div>
+
+      <button
+        type="button"
+        className="kartu__hapus"
+        onClick={() => onHapus(id)}
+        aria-label={`Hapus ${judul}`}
+        title="Hapus dari katalog"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
     </article>
   )
 }

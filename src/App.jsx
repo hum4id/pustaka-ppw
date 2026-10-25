@@ -14,6 +14,10 @@ function App() {
     setDaftarBuku((sebelumnya) => [{ id, ...bukuBaru }, ...sebelumnya])
   }
 
+  const hapusBuku = (id) => {
+    setDaftarBuku((sebelumnya) => sebelumnya.filter((buku) => buku.id !== id))
+  }
+
   return (
     <>
       <Header namaAplikasi="Pustaka" institusi="Perpustakaan Telkom University Purwokerto" />
@@ -25,7 +29,7 @@ function App() {
           <aside className="layout__samping">
             <FormBuku daftarKategori={KATEGORI} onTambah={tambahBuku} />
           </aside>
-          <DaftarBuku daftarBuku={daftarBuku} />
+          <DaftarBuku daftarBuku={daftarBuku} onHapus={hapusBuku} />
         </div>
       </main>
     </>
