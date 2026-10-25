@@ -1,12 +1,43 @@
-# React + Vite
+# Pustaka — Katalog Buku (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React + Vite untuk katalog buku perpustakaan kampus. Entitas utama: **Buku**
+(`id`, `judul`, `penulis`, `penerbit`, `tahun`, `kategori`, `stok`).
 
-Currently, two official plugins are available:
+## Menjalankan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # build produksi ke folder dist/
+```
 
-## Expanding the ESLint configuration
+## Struktur
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+├── App.jsx                 # state utama (daftarBuku), handler tambah/hapus, filter
+├── components/
+│   ├── Header.jsx          # judul aplikasi + hero
+│   ├── StatistikRingkas.jsx# ringkasan jumlah judul, eksemplar, kategori
+│   ├── FormBuku.jsx        # form controlled + tombol Tambah
+│   ├── PencarianBuku.jsx   # pencarian + filter kategori
+│   ├── DaftarBuku.jsx      # render list .map() + conditional rendering
+│   ├── KartuBuku.jsx       # kartu per buku
+│   ├── KeadaanKosong.jsx   # tampilan "Belum ada data Buku"
+│   └── Footer.jsx
+├── data/bukuAwal.js        # data awal
+└── services/
+    ├── api.js              # helper fetch + VITE_API_URL
+    └── bukuService.js      # ambilSemuaBuku, simpanBuku, hapusBukuById
+```
+
+## Integrasi backend (Pekan 11)
+
+Salin `.env.example` menjadi `.env`, lalu isi `VITE_API_URL` (misal `http://localhost:3000/api`).
+`bukuService.js` otomatis beralih ke endpoint berikut:
+
+| Method | Endpoint      | Fungsi              |
+| ------ | ------------- | ------------------- |
+| GET    | `/buku`       | `ambilSemuaBuku()`  |
+| POST   | `/buku`       | `simpanBuku(data)`  |
+| DELETE | `/buku/:id`   | `hapusBukuById(id)` |
