@@ -1,18 +1,25 @@
 import KartuBuku from './KartuBuku'
 import KeadaanKosong from './KeadaanKosong'
 
-function DaftarBuku({ daftarBuku, onHapus }) {
+function DaftarBuku({ daftarBuku, totalData, onHapus }) {
   return (
     <section className="daftar">
       <div className="daftar__kepala">
         <h2>Katalog</h2>
-        <span className="daftar__jumlah">{daftarBuku.length} judul</span>
+        <span className="daftar__jumlah">
+          {daftarBuku.length === totalData ? `${totalData} judul` : `${daftarBuku.length} dari ${totalData} judul`}
+        </span>
       </div>
 
-      {daftarBuku.length === 0 ? (
+      {totalData === 0 ? (
         <KeadaanKosong
           pesan="Belum ada data Buku"
           keterangan="Tambahkan buku pertama melalui formulir di samping."
+        />
+      ) : daftarBuku.length === 0 ? (
+        <KeadaanKosong
+          pesan="Tidak ada buku yang cocok"
+          keterangan="Coba kata kunci lain atau pilih kategori Semua."
         />
       ) : (
         <div className="daftar__grid">
