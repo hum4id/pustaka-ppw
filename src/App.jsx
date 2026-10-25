@@ -52,7 +52,7 @@ function App() {
 
   return (
     <>
-      <Header namaAplikasi="Pustaka" institusi="Perpustakaan Telkom University Purwokerto" />
+      <Header namaAplikasi="Pustaka" institusi="Perpustakaan Abu" />
 
       <main className="container main">
         <StatistikRingkas daftarBuku={daftarBuku} />
