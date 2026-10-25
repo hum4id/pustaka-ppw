@@ -54,3 +54,16 @@
 .stok { font-size: 12px; padding: 3px 10px; border-radius: 999px; }
 .stok--ada { background: var(--ok-soft); color: var(--ok); }
 .stok--habis { background: var(--accent-soft); color: var(--accent); }
+
+/* ===== Statistik ringkas ===== */
+.statistik { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); margin-bottom: 56px; overflow: hidden; }
+.statistik__item { display: flex; flex-direction: column; gap: 4px; padding: 22px 26px; }
+.statistik__item + .statistik__item { border-left: 1px solid var(--line); }
+.statistik__nilai { font-family: var(--serif); font-size: 40px; line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+.statistik__label { color: var(--muted); font-size: 13.5px; }
+@media (max-width: 760px) {
+  .statistik { grid-template-columns: repeat(2, 1fr); }
+  .statistik__item:nth-child(3) { border-left: 0; }
+  .statistik__item:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
