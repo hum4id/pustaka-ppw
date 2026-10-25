@@ -1,4 +1,4 @@
-# Pustaka — Katalog Buku (Frontend)
+# Pustaka - Katalog Buku (Frontend)
 
 Frontend React + Vite untuk katalog buku perpustakaan kampus. Entitas utama: **Buku**
 (`id`, `judul`, `penulis`, `penerbit`, `tahun`, `kategori`, `stok`).
