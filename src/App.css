@@ -1,42 +1,56 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ===== Header ===== */
+.header { border-bottom: 1px solid var(--line); }
+.header__bar { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink);
+  font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; }
+.brand__mark { width: 30px; height: 30px; }
+.brand__mark rect { fill: var(--ink); }
+.brand__mark path { fill: none; stroke: var(--bg); stroke-width: 1.6; stroke-linejoin: round; }
+.header__inst { font-size: 13.5px; color: var(--muted); }
+
+.hero { padding: 72px 28px 64px; display: grid; grid-template-columns: 1.55fr 1fr; gap: 64px; align-items: end; }
+.hero__title { font-size: clamp(40px, 5.2vw, 64px); line-height: 1.02; font-variation-settings: 'opsz' 144; }
+.hero__title em { font-style: italic; color: var(--accent); }
+.hero__lead { color: var(--ink-soft); font-size: 16.5px; max-width: 440px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; gap: 20px; padding: 48px 16px 40px; }
+  .header__inst { display: none; }
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+/* ===== Layout utama ===== */
+.main { padding-top: 56px; padding-bottom: 96px; }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* ===== Daftar buku ===== */
+.daftar__kepala { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 18px;
+  border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.daftar__kepala h2 { font-size: 30px; }
+.daftar__jumlah { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.daftar__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* ===== Kartu buku ===== */
+.kartu { position: relative; display: flex; gap: 16px; padding: 18px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.kartu:hover { transform: translateY(-2px); border-color: var(--line-strong);
+  box-shadow: 0 1px 2px rgba(28,26,23,.05), 0 18px 36px -18px rgba(28,26,23,.25); }
+.kartu__sampul { flex: none; width: 58px; height: 84px; border-radius: 4px 8px 8px 4px; display: grid; place-items: center;
+  color: rgba(255,255,255,.92); font-family: var(--serif); font-style: italic; font-size: 30px; position: relative;
+  box-shadow: inset 6px 0 0 rgba(0,0,0,.14), inset 7px 0 0 rgba(255,255,255,.08); }
+.sampul--fiksi { background: #7a3b33; }
+.sampul--sains { background: #2f4f6b; }
+.sampul--teknologi { background: #33524a; }
+.sampul--sejarah { background: #8a6a2f; }
+.sampul--filsafat { background: #4e3f63; }
+.sampul--biografi { background: #5f5145; }
+.kartu__isi { min-width: 0; display: flex; flex-direction: column; flex: 1; }
+.kartu__atas { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.kartu__atas .stok { flex: none; margin-top: 1px; white-space: nowrap; font-size: 11.5px; padding: 3px 9px; }
+.kartu__judul { font-size: 18px; line-height: 1.25; min-width: 0; }
+.kartu__penulis { color: var(--ink-soft); font-size: 14px; }
+.kartu__meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.kartu__kaki { display: flex; gap: 8px; align-items: center; margin-top: auto; padding-top: 12px; }
+.tag { font-size: 12px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); }
+.stok { font-size: 12px; padding: 3px 10px; border-radius: 999px; }
+.stok--ada { background: var(--ok-soft); color: var(--ok); }
+.stok--habis { background: var(--accent-soft); color: var(--accent); }
